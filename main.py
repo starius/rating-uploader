@@ -29,8 +29,8 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             self.send_header("Content-type", "text/html")
             self.end_headers()
             self.wfile.write("Ok")
-        except:
-            pass
+        except Exception, e:
+            print(e)
 
 if __name__ == '__main__':
     server_class = BaseHTTPServer.HTTPServer
