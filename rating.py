@@ -1,8 +1,11 @@
 import config
+from repoze.lru import lru_cache
 
+@lru_cache(maxsize=500)
 def get_logins(worksheet):
     return worksheet.col_values(config.logins_col)
 
+@lru_cache(maxsize=500)
 def get_tasks(worksheet):
     return worksheet.row_values(config.tasks_row)
 
