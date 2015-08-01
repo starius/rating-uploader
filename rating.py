@@ -26,5 +26,5 @@ def set_rating(worksheet, login, task, rating):
 
 def update_rating(worksheet, login, task, rating):
     prev = float(get_rating(worksheet, login, task))
-    if rating > prev:
+    if float(rating) > prev:
         set_rating(worksheet, login, task, rating)
