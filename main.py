@@ -33,9 +33,9 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             print(e)
 
 if __name__ == '__main__':
-    server_class = BaseHTTPServer.HTTPServer
     wks = worksheet.get_worksheet()
     print('Connected to Google Sheets')
+    server_class = BaseHTTPServer.HTTPServer
     httpd = server_class((HOST_NAME, PORT_NUMBER), MyHandler)
     try:
         httpd.serve_forever()
