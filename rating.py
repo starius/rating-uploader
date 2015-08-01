@@ -8,9 +8,9 @@ def get_tasks(worksheet):
 
 def get_cell_indexes(worksheet, login, task):
     logins = get_logins(worksheet)
-    login_index = logins.index(login)
+    login_index = logins.index(login) + 1
     tasks = get_tasks(worksheet)
-    task_index = tasks.index(task)
+    task_index = tasks.index(task) + 1
     return (login_index, task_index)
 
 def get_rating(worksheet, login, task):
@@ -20,3 +20,8 @@ def get_rating(worksheet, login, task):
 def set_rating(worksheet, login, task, rating):
     i, j = get_cell_indexes(worksheet, login, task)
     worksheet.update_cell(i, j, rating)
+
+def update_rating(worksheet, login, task, rating):
+    prev = float(get_rating(worksheet, login, task))
+    if rating > prev:
+        set_rating(worksheet, login, task, rating)
