@@ -25,6 +25,10 @@ def set_rating(worksheet, login, task, rating):
     worksheet.update_cell(i, j, rating)
 
 def update_rating(worksheet, login, task, rating):
-    prev = float(get_rating(worksheet, login, task))
+    prev = -1
+    try:
+        prev = float(get_rating(worksheet, login, task))
+    except:
+        pass
     if float(rating) > prev:
         set_rating(worksheet, login, task, rating)
