@@ -27,7 +27,14 @@ def set_rating(worksheet, login, task, rating):
     worksheet.update_cell(i, j, rating)
 
 def get_deadline(worksheet, login, task):
-    return '2099-01-01' # TODO
+    logins = get_logins(worksheet)
+    login_index = logins.index(login)
+    tasks = get_tasks(worksheet)
+    task_index = tasks.index(task)
+    for i in range(task_index, len(tasks)):
+        if tasks[i] == 'deadline':
+            return worksheet.cell(login_index+1, i+1).value
+    return '2099-01-01'
 
 def now():
     return datetime.date.today().strftime("%Y-%m-%d")
