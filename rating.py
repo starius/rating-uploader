@@ -33,7 +33,9 @@ def get_deadline(worksheet, login, task):
     task_index = tasks.index(task)
     for i in range(task_index, len(tasks)):
         if tasks[i] == 'deadline':
-            return worksheet.cell(login_index+1, i+1).value
+            deadline = worksheet.cell(login_index+1, i+1).value
+            if deadline.startswith('20'):
+                return deadline
     return '2099-01-01'
 
 def now():
